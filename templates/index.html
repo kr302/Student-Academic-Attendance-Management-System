@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>SMS Portal</h2>
+    <a href="/">Dashboard</a>
+    <a href="#add-student">Add Student</a>
+    <a href="#student-list">Student Records</a>
+</div>
+
+<div class="main-content">
+
+    <header>
+        <h1>Student Academic & Attendance Management</h1>
+        <p>Manage student information and attendance easily.</p>
+    </header>
+
+    <section class="dashboard">
+        <div class="card">
+            <h3>Total Students</h3>
+            <h2>{{ total }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>Low Attendance</h3>
+            <h2>{{ low_attendance }}</h2>
+        </div>
+    </section>
+
+    <section class="form-section" id="add-student">
+        <h2>Add New Student</h2>
+
+        <form action="/add" method="POST">
+            <input type="text" name="roll" placeholder="Roll Number" required>
+            <input type="text" name="name" placeholder="Student Name" required>
+            <input type="text" name="course" placeholder="Course" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <button type="submit">Add Student</button>
+        </form>
+    </section>
+
+    <section class="table-section" id="student-list">
+        <h2>Student Records</h2>
+
+        <form action="/" method="GET" class="search-form">
+            <input type="text" name="search" placeholder="Search by name or roll number">
+            <button type="submit">Search</button>
+        </form>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll No</th>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Email</th>
+                        <th>Total Classes</th>
+                        <th>Attendance</th>
+                        <th>Status</th>
+                        <th>Mark Attendance</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td>{{ student.roll }}</td>
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.course }}</td>
+                        <td>{{ student.email }}</td>
+                        <td>{{ student.total_classes }}</td>
+                        <td>{{ student.attendance }}%</td>
+
+                        <td>
+                            {% if student.attendance < 75 %}
+                                <span class="warning">Low</span>
+                            {% else %}
+                                <span class="good">Good</span>
+                            {% endif %}
+                        </td>
+
+                        <td>
+                            <form action="/attendance/{{ student.roll }}/Present" method="POST">
+                                <button type="submit">Present</button>
+                            </form>
+
+                            <form action="/attendance/{{ student.roll }}/Absent" method="POST">
+                                <button type="submit">Absent</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="8">No student records found.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

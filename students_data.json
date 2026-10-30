@@ -1,0 +1,77 @@
+[
+    {
+        "roll": "101",
+        "name": "Arjun",
+        "course": "CSE",
+        "email": "arjuncse12@gmail.com",
+        "attendance": 100,
+        "attendance_log": [
+            {
+                "date": "2026-10-30",
+                "status": "Present"
+            }
+        ],
+        "total_classes": 1,
+        "present_count": 1
+    },
+    {
+        "roll": "102",
+        "name": "Amal",
+        "course": "CSE",
+        "email": "amalcse23@gmail.com",
+        "attendance_log": [
+            {
+                "date": "2026-10-30",
+                "status": "Present"
+            }
+        ],
+        "total_classes": 1,
+        "present_count": 1,
+        "attendance": 100
+    },
+    {
+        "roll": "103",
+        "name": "Rahul",
+        "course": "CSE",
+        "email": "rahulcse45@gmail.com",
+        "attendance_log": [
+            {
+                "date": "2026-10-30",
+                "status": "Absent"
+            }
+        ],
+        "total_classes": 1,
+        "present_count": 0,
+        "attendance": 0
+    },
+    {
+        "roll": "104",
+        "name": "Devan",
+        "course": "CSE",
+        "email": "devancse56@gmail.com",
+        "attendance_log": [
+            {
+                "date": "2026-10-30",
+                "status": "Present"
+            }
+        ],
+        "total_classes": 1,
+        "present_count": 1,
+        "attendance": 100
+    },
+    {
+        "roll": "105",
+        "name": "Anzil",
+        "course": "CSE",
+        "email": "ansilcse87@gmail.com",
+        "attendance_log": [
+            {
+                "date": "2026-10-30",
+                "status": "Absent"
+            }
+        ],
+        "total_classes": 1,
+        "present_count": 0,
+        "attendance": 0
+    }
+]
